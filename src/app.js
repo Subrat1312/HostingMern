@@ -22,6 +22,7 @@ app.get('*', function(_,res){
     res.status(500).send(err);
   }
 });
+const PORT=process.env.PORT || 8080;
 app.use(
   sessions({
     secret: process.env.SESSION_SECRET,
@@ -54,7 +55,7 @@ connectDb()
     }
   })
   .then(() => {
-    app.listen(8080, () => console.log("Server is listening on http://localhost:8080"))
+    app.listen(PORT, () => console.log("Server is listening on http://localhost:8080"))
   })
   .catch((err) => {
     console.error("Failed to connect to database", err)
